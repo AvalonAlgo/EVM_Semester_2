@@ -8,7 +8,7 @@ def nothing_for_trackbar(x):
 
 cv.namedWindow('Controls')
 cv.createTrackbar('Hand', 'Controls', 0, 1, nothing_for_trackbar)
-cv.createTrackbar('Laplacian', 'Controls', 0, 1, nothing_for_trackbar)
+cv.createTrackbar('Laplacian', 'Controls', 0, 2, nothing_for_trackbar)
 cv.createTrackbar('Blur', 'Controls', 0, 100, nothing_for_trackbar)
 
 vid = cv.VideoCapture(0)
@@ -51,6 +51,8 @@ while True:
     if laplace_on_off == 0:
         pass
     elif laplace_on_off == 1:
+        frame = cv.Laplacian(frame, cv.CV_8U)
+    elif laplace_on_off == 2:
         frame = cv.Laplacian(frame, cv.CV_64F)
 
     """ Blur """
